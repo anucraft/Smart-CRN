@@ -1,0 +1,37 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Public Sans", ui-sans-serif, system-ui, sans-serif;
+
+  --color-ink: #14202e;        /* navigation rail, headings */
+  --color-ink-soft: #1f3044;   /* hover/active on the rail */
+  --color-paper: #eef1f2;      /* page background */
+  --color-line: #d8dee3;       /* borders */
+  --color-text: #1b2631;
+  --color-muted: #5b6874;
+  --color-teal: #0e7c6b;       /* primary action */
+  --color-teal-dark: #0a5e51;
+  --color-mint: #3dd6bc;       /* accent on dark surfaces */
+  --color-amber: #b7791f;      /* attention: pending, on-hold */
+  --color-rose: #b4414b;       /* problems: failed, refunded */
+  --color-sky: #2d6a9f;        /* in progress */
+}
+
+html, body, #root { height: 100%; }
+body { background: var(--color-paper); color: var(--color-text); font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
+h1, h2, h3 { font-family: var(--font-display); color: var(--color-ink); letter-spacing: -0.01em; }
+
+:focus-visible { outline: 2px solid var(--color-teal); outline-offset: 2px; }
+
+@layer components {
+  .panel { @apply bg-white border border-line rounded-md; }
+  .btn, .btn-primary, .btn-secondary, .btn-danger { @apply inline-flex items-center justify-center gap-2 rounded-md px-3.5 py-2 text-sm font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer; }
+  .btn-primary { @apply bg-teal text-white hover:bg-teal-dark; }
+  .btn-secondary { @apply bg-white text-ink border border-line hover:bg-paper; }
+  .btn-danger { @apply text-rose hover:bg-rose/10; }
+  .input { @apply w-full rounded-md border border-line bg-white px-3 py-2 text-sm placeholder:text-muted/70; }
+  .label { @apply block text-sm font-medium text-ink mb-1; }
+  .th { @apply px-4 py-2.5 text-left text-xs font-semibold text-muted border-b border-line bg-paper/60 whitespace-nowrap; }
+  .td { @apply px-4 py-3 text-sm border-b border-line/70 align-middle; }
+}
