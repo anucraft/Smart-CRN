@@ -19,7 +19,7 @@ def register_cli(app):
     @app.cli.command("create-admin")
     @click.option("--email", prompt=True)
     @click.option("--name", prompt=True, default="Admin")
-    @click.password_option()
+    @click.option("--password", required=True, help="Admin password")
     def create_admin(email, name, password):
         """Create (or reset the password of) an admin user."""
         email = email.strip().lower()
